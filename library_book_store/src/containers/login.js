@@ -1,9 +1,15 @@
+import { useState } from "react";
+import apiRequest from "../apiCalls/apiRequest";
 import Header from "../components/header";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLoginClick = () => {
+    apiRequest("login", "post", "JSON", { email, password }, "abc");
+  };
   return (
     <div>
-      {" "}
       <Header />
       <div
         style={{
@@ -27,9 +33,21 @@ const Login = () => {
             margin: "auto",
           }}
         >
-          <input placeholder="email" type={"email"} />
-          <input placeholder="Password" type={"password"} />
-          <button>Login</button>
+          <input
+            placeholder="email"
+            type={"email"}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <input
+            placeholder="Password"
+            type={"password"}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <button onClick={handleLoginClick} type={"button"}>
+            Login
+          </button>
         </form>
       </div>
     </div>

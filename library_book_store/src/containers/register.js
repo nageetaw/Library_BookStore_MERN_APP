@@ -1,10 +1,17 @@
+import { useState } from "react";
+import apiRequest from "../apiCalls/apiRequest";
 import Header from "../components/header";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleRegisterClick = () => {
+    apiRequest("register", "post", "json", { name, email, password }, "token");
+  };
   return (
     <div>
-      {" "}
-      <Header />{" "}
+      <Header />
       <div
         style={{
           display: "flex",
@@ -27,10 +34,27 @@ const Register = () => {
             margin: "auto",
           }}
         >
-          <input placeholder="name" type={"text"} />
-          <input placeholder="email" type={"email"} />
-          <input placeholder="Password" type={"password"} />
-          <button>Register</button>
+          <input
+            placeholder="name"
+            type={"text"}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+          <input
+            placeholder="email"
+            type={"email"}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <input
+            placeholder="Password"
+            type={"password"}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <button type={"button"} onClick={handleRegisterClick}>
+            Register
+          </button>
         </form>
       </div>
     </div>
