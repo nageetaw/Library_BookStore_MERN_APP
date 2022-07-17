@@ -16,6 +16,7 @@ const Login = () => {
     );
     if (response.status == 200) {
       localStorage.setItem("token", response.token);
+      localStorage.setItem("user_id", response.data._id);
       console.log(response.data);
       navigation("/", { replace: true });
     }

@@ -18,8 +18,8 @@ const login = (req, res, next) => {
                 process.env.SECRET_KEY
               );
               // set the user id to session
-              req.session.uuid = onFound._id;
-              console.log("sessions ", req.session);
+              // req.session.uuid = onFound._id;
+              // console.log("sessions ", req.session);
               res.send(
                 JSON.stringify({ status: "200", data: onFound, token: token })
               );
