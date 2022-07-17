@@ -1,7 +1,7 @@
 const express = require("express");
 const bookRoutes = express();
-const booksController = require("../controllers/bookController");
+const userController = require("../controllers/userController");
 
-bookRoutes.post("/login", booksController.login);
-bookRoutes.post("/register", booksController.register);
+bookRoutes.post("/login", userController.login);
+bookRoutes.post("/register", userController.register);
 module.exports = bookRoutes;

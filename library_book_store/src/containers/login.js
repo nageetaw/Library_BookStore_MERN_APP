@@ -1,12 +1,24 @@
 import { useState } from "react";
 import apiRequest from "../apiCalls/apiRequest";
 import Header from "../components/header";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigation = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleLoginClick = () => {
-    apiRequest("login", "post", "JSON", { email, password }, "abc");
+  const handleLoginClick = async () => {
+    const response = await apiRequest(
+      "login",
+      "post",
+      "JSON",
+      { email, password },
+      "abc"
+    );
+    if (response.status == 200) {
+      localStorage.setItem("token", response.token);
+      console.log(response.data);
+      navigation("/", { replace: true });
+    }
   };
   return (
     <div>
