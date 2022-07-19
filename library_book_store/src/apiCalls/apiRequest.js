@@ -9,7 +9,7 @@ const apiRequest = async (
   console.log(body);
   const response = await fetch("http://localhost:3001/" + endPoints, {
     method: reqType,
-    body: JSON.stringify(body),
+    body: body != null ? JSON.stringify(body) : body,
     headers: { "Content-Type": contentType },
     credentials: "same-origin",
   });

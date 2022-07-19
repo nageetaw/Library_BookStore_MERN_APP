@@ -9,6 +9,7 @@ import {
   AddBook,
   ViewBooks,
 } from "./containers";
+import EditBook from "./containers/editBook";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/addBook" element={<AddBook />} />
           <Route path="/viewBooks" element={<ViewBooks />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/editBook" element ={<EditBook />}/>
         </Routes>
       </BrowserRouter>
     </div>
